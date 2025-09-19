@@ -1,0 +1,52 @@
+#include <iostream>
+#include <limits>
+
+using namespace std;
+
+
+
+void fill_array(unsigned int* mas, int n, int seed) {
+    srand(seed); //эта функция на рандом заполняет массив прост
+
+    for (int i = 0; i < n; i++) {
+        mas[i] = rand() % INT32_MAX;
+    }
+
+
+
+}
+
+void sort_alay(unsigned int* mas, int n) {
+    int zam;
+    for (int i = 1; i < n; i++) {
+        for (int j = 1; j < n; j++)
+        {
+            if (mas[j - 1] > mas[j]) {
+                zam = mas[j - 1];
+                mas[j - 1] = mas[j];
+
+                mas[j] = zam;
+            }
+        }
+    }
+}
+
+void print_array(unsigned int* mas, int n) {
+    for (int i = 1; i < n; i++)
+    {
+        cout << mas[i] << " ";
+    }
+    cout << endl;
+
+}
+
+int main() {
+    unsigned int mas[50];
+    fill_array(mas, 50, 4);
+    sort_alay(mas, 50);
+
+    print_array(mas, 50);
+
+   
+   
+}
