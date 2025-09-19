@@ -1,0 +1,62 @@
+#include <iostream>
+
+using namespace std;
+
+void generate(int* mas, int n) {
+    for (int i = 0; i < n; i++) {
+        mas[i] = rand() % 1000;
+        
+    }
+}
+
+void print(int* mas, int n) {
+    for (int i = 0; i < n; i++) {
+        cout << mas[i] << " ";
+    }
+    cout << endl;
+}
+
+
+
+void quick_sort(int* mas, int n)
+{
+    // проверить что n > 1
+    // 0. выбрать pivot
+    // 1. разбиение
+    // i = 0, j = n - 1, пока i <= j:
+    // увеличиваем i пока mas[i] < pivot
+    // уменьшаем j пока mas[j] > pivot
+    // если i <= j: меняем местами элементы с номерами i и j, i++; j--
+    // 2. запустить алгоритм на участках 0...j; i...n-1
+    if (n < 1) return;
+    int pivot = mas[rand() % n];
+    int i = 0, j = n - 1;
+    while (i <= j) {
+        while (mas[i] < pivot) i++;
+        while (mas[j] > pivot) j--;
+        if (i <= j) {
+            int i2 = i;
+            i = j;
+            j = i;
+            i++;
+            j--;
+        }
+    }
+
+    quick_sort(mas, j + 1);
+    quick_sort(mas + i, n - i);
+}
+
+
+
+int main() {
+    int mas[100];
+    generate(mas, 100);
+    generate(mas, 100);
+    cout << "first mas: ";
+    print(mas, 100);
+    cout << "new mas: ";
+    quick_sort(mas, 100);
+    print(mas, 100);
+
+}
