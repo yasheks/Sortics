@@ -1,0 +1,43 @@
+#include <iostream>
+
+using namespace std;
+
+void generate(int *mas, int n) {
+    /*
+     * int i=0;
+     * while (i<n)
+     * {
+     *      mas[i]=rand() % 1000;
+     *      i++;
+     * }
+     */
+    for (int i = 0; i < n; i++) {
+        mas[i] = rand() % 1000;
+    }
+}
+
+void print(int *mas, int n) {
+    for (int i = 0; i < n; i++) {
+        cout << mas[i] << " ";
+    }
+    cout << endl;
+}
+
+int findMin(int *mas, int n)
+{
+    // TODO: поиск номера минимального элемента
+}
+
+void selectSort(int *mas, int n)
+{
+    // TODO: сортировка массива
+}
+
+int main() {
+    int mas[100];
+    generate(mas, 100);
+    print(mas, 100);
+    selectSort(mas, 100);
+    print(mas, 100);
+
+}
